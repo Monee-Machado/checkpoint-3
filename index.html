@@ -65,10 +65,11 @@
             </div>
           </div>
           <div class="col">
+            <!-- FIXME createjot 0 REFERENCES -->
             <form onsubmit="app.JotController.createJot()">
               <input class="form-control rounded shadow" type="text" maxlength="15" placeholder="Title">
               <!-- FIXME Look up MAX on redacted example! -->
-              <input class="form-control rounded shadow" type="datetime-local" name="createdOn">
+              <input class="form-control rounded shadow" name="createdOn" type="datetime-local">
 
               <div class="col"><button class="btn btn-info shadow">Create
                   +</button></div>
@@ -103,28 +104,32 @@
           <div class="col-md-3">
             <p>(last updated here)</p>
           </div>
-          <div class="col-md-3">
-            <form onsubmit="app.JotController.deleteJot()"><button class="btn btn-outline-danger">Delete</button></form>
+          <!-- SECTION this is where we create new jots -->
+          <form class="text-center mt-3">
+            <div class="form-group mt-2">
+              <textarea class="form-control textarea bg-dark input-text" style="color:aquamarine" id="" name="body"
+                placeholder="Start Jotting" rows="25" required></textarea>
+            </div>
 
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-outline-light">Save</button>
-          </div>
-        </div>
-        <!-- SECTION this is where we create new jots -->
-        <form class="text-center mt-3">
-          <div class="form-group mt-2">
-            <textarea class="form-control textarea bg-dark" style="color:aquamarine" id="" name="body"
-              placeholder="Start Jotting" rows="25" required></textarea>
-          </div>
-          <div class="p-2">
             <!-- NOTE preventing default not working on the jotsubmit for some reason?? -->
-            <form onsubmit="app.JotController.jotSubmit()"><button class="btn btn-info w-50 shadow mt-2">Submit
-                -></button></form>
+            <div class="col">
+              <div class="col-md-8 m-3"></div>
+              <!-- FIXME Deletejot 0 REFERENCES -->
+              <form onsubmit="app.JotController.deleteJot()"><button class="btn btn-outline-danger">Delete</button>
+              </form>
 
-          </div>
-        </form>
-      </div>
+              <button class="btn btn-outline-light">Save</button>
+              <!-- FIXME Include jotWordCount controller! -->
+              <div class="col-md-12 d-flex justify-content-end"><span id="">0 </span>words</div>
+              <div class="col-md-12 d-flex justify-content-end">
+              </div>
+
+
+
+
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 

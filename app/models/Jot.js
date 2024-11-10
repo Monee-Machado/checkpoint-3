@@ -16,9 +16,10 @@ export class Jot {
     return `<div class="p-3 mt-4 mb-3 d-flex justify-content-between">
                 <span class="fw-bold">${this.name}</span><span>${this.createdOn}</span>
               </div>`
-    // NOTE backticks n co go here
   }
 
+
+  // FIXME NOT WORKING WITH DRAW ACTIVE JOT??
   get activeDisplay() {
     return `
     

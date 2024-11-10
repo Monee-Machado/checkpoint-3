@@ -27,6 +27,7 @@ export class JotController {
     jotListElm.innerHTML = ''
     AppState.Jots.forEach(jot => jotListElm.innerHTML += jot.jotDisplay)
 
+    // NOTE jot-count EQUALS 0 or more jots on the corner of side nav
     const jotCountElm = document.getElementById('jot-count')
     jotCountElm.innerHTML = AppState.Jots.length.toString()
 
@@ -37,13 +38,15 @@ export class JotController {
   }
   // SECTION CREATING jots on the side nav
 
+  // NOTE active-jot EQUALS side nav display
   drawActiveJot() {
     console.log('✏👉📃')
     const activeJotElm = document.getElementById('active-jot')
     activeJotElm.innerHTML = ''
     AppState.Jots.forEach(jot => activeJotElm.innerHTML += jot.activeDisplay)
 
-    // activeJotElm.innerHTML = AppState.activeJot.activeDisplay
+    // FIXME NOT working with ACTIVE display HTML???
+    activeJotElm.innerHTML = AppState.activeJot.activeDisplay
   }
 
 
@@ -72,9 +75,9 @@ export class JotController {
 
 
 
-  // SECTION SUBMITTING jots in the giant form
-  jotSubmit() {
-    console.log('Submitting Jot')
+  // SECTION writing jots in the giant form
+  jotSave() {
+    console.log('Saving Jot')
     event.preventDefault()
 
   }
@@ -85,6 +88,12 @@ export class JotController {
     event.preventDefault()
   }
 
+
+  jotWordCount() {
+    const wordCountElm = document.getElementById('word-count')
+    wordCountElm.innerHTML = ''
+
+  }
 
 
 }
