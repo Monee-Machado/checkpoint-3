@@ -13,8 +13,15 @@ export class JotController {
   constructor() {
     console.log('Jot controller connected 📝');
     this.drawJot()
-    // AppState.on('jots', this.drawJot)
-    // jotService.loadJots()
+    // jotService.loadJots() <------- loading goes LAST!!!!
+    AppState.on('drawJot', () => console.log('Jot added'))
+    AppState.on('jots', this.drawJot)
+    AppState.on('activeDrawJot', this.drawActiveJot)
+    jotService.loadJots()
+    // FIXME UNABLE TO REGISTER LISTENER FOR 'jots' (SIDE NAV)
+    // FIXME UNABLE TO REGISTER LISTENER FOR 'drawJot' (SIDE NAV)
+    // FIXME UNABLE TO REGISTER LISTENER FOR 'activeDrawJot' (SIDE NAV)
+    // FIXME SAVES DON'T WORK
   }
 
   // NOTE Turning off ^^^this.draw turns off the html display on the webpage
@@ -52,7 +59,7 @@ export class JotController {
 
 
   createJot() {
-    console.log('Creating Jot')
+    console.log('Creating Jot');
     event.preventDefault()
     const formElm = event.target
     const formData = {
@@ -65,12 +72,18 @@ export class JotController {
 
     console.log(formData)
     jotService.createJot(formData)
+    // this.drawActiveJot()
+    // NOTE does something GO IN HERE to make something display on the webpage??
 
 
 
     // const formElem = event.target
     // const jotData = getFormData(formElem)
     // jotService.createJot(jotData)
+  }
+
+  drawCreateJot() {
+
   }
 
 

@@ -9,7 +9,8 @@ import { loadState, saveState } from "../utils/Store.js"
 class JotService {
 
   createJot(jotData) {
-    // const jot = new Jot(jotData)
+    // const jot = new Jot(jotData);
+    // console.log('service', jotData);
     AppState.Jots.push(new Jot(jotData))
     console.log(AppState.Jots);
     this.saveJots()
@@ -17,21 +18,16 @@ class JotService {
 
 
   saveJots() {
-    saveState('jots', AppState.Jots)
+    saveState('Jots', AppState.Jots)
   }
 
   loadJots() {
-    const jots = loadState('jots', [Jot])
-    if (jots.length == 0) {
-      AppState.emit('Jots')
-    }
-    else {
-      AppState.Jots = jots
+    AppState.Jots = loadState('jots', [Jot])
 
-    }
   }
-
 }
+
+
 
 
 

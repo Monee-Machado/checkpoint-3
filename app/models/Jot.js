@@ -9,7 +9,7 @@ export class Jot {
     this.body = data.body
     this.createdOn = data.createdOn == undefined ? new Date() : new Date(data.createdOn)
     this.lastUpdated = data.lastUpdated == undefined ? new Date() : new Date(data.lastUpdated)
-    // NOTE check again IF lastUpdated belongs in arrays too in case if it doesnt work
+    // NOTE check again IF lastUpdated belongs in arrays too in case if it doesn't work
   }
 
   get jotDisplay() {
