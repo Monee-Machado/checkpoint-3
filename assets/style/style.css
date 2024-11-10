@@ -1,0 +1,28 @@
+.deep-blue {
+  background-color: #120a42;
+}
+
+.jumble-card {
+  background-color: #190e5a;
+  border-radius: 15px;
+  padding: 1em 2em;
+}
+
+.sea-button {
+  color: #60dd8e
+}
+
+.textarea {
+  border: none;
+  outline: none;
+}
+
+.shadow {
+  box-shadow: #000000;
+}
+
+.east-sea {
+  font-family: "East Sea Dokdo", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+}

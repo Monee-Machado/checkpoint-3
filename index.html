@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon"
+    href="https://c8.alamy.com/comp/R1PN0J/pencil-vector-icon-isolated-on-transparent-background-pencil-transparency-logo-concept-R1PN0J.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
+    integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>JOT</title>
+</head>
+
+<body>
+  <!-- SECTION -->
+  <header>
+    <nav class="navbar navbar-dark navbar-expand bg-black text-light">
+      <a class="navbar-brand" href="#">
+
+        <span class="ml-2">
+          <h1 class="east-sea"><span class="mdi mdi-chart-bubble fs-1">Jot</span></h1>
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- NAVLINKS -->
+          <!-- <a href="#/about" class="nav-link">About</a> -->
+        </div>
+      </div>
+      <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
+    </nav>
+  </header>
+
+  <!-- SECTION -->
+  <main class="container-fluid deep-blue text-light">
+    <section class="row d-flex justify-content-between">
+      <!-- SECTION DRAWS cards onto the display to the right -->
+      <div class="col-md-3 m-5 jumble-card shadow">
+        <div class="row d-flex">
+          <div>
+            <span class="d-flex justify-content-end fs-5 sea-button"><i><span id="jot-count" class="fw-bold">0</span>
+                Jots</i></span>
+          </div>
+        </div>
+        <div class="p-3">
+          <span>
+            <h2 class="mdi mdi-pencil">Add a Jot</h2>
+          </span>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-end">
+            <div class="col p-1">
+              <span>Color</span>
+              <input type="color" class="form-control" name="color" required>
+            </div>
+          </div>
+          <div class="col">
+            <form onsubmit="app.JotController.createJot()">
+              <input class="form-control rounded shadow" type="text" maxlength="15" placeholder="Title">
+              <!-- FIXME Look up MAX on redacted example! -->
+              <input class="form-control rounded shadow" type="datetime-local" name="createdOn">
+
+              <div class="col"><button class="btn btn-info shadow">Create
+                  +</button></div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+
+            <section id="jotlist" class="row">
+
+              <div class="p-3 mb-4 d-flex justify-content-between">
+                <span>aaaaaaaa</span><span>1/1/2024</span>
+              </div>
+
+            </section>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      </div>
+      <div class="col-md-8 jumble-card shadow mt-5">
+        <div class="row d-flex">
+          <div class="mt-2 p-3">
+            <h2 class="sea-button">(Insert title of Jot here)</h2>
+          </div>
+          <p>(time created here)</p>
+          <div class="col-md-3">
+            <p>(last updated here)</p>
+          </div>
+          <div class="col-md-3">
+            <form onsubmit="app.JotController.deleteJot()"><button class="btn btn-outline-danger">Delete</button></form>
+
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-outline-light">Save</button>
+          </div>
+        </div>
+        <!-- SECTION this is where we create new jots -->
+        <form class="text-center mt-3">
+          <div class="form-group mt-2">
+            <textarea class="form-control textarea bg-dark" style="color:aquamarine" id="" name="body"
+              placeholder="Start Jotting" rows="25" required></textarea>
+          </div>
+          <div class="p-2">
+            <!-- NOTE preventing default not working on the jotsubmit for some reason?? -->
+            <form onsubmit="app.JotController.jotSubmit()"><button class="btn btn-info w-50 shadow mt-2">Submit
+                -></button></form>
+
+          </div>
+        </form>
+      </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SECTION -->
+  <footer class="bg-dark text-light">
+    <div class="text-center no-select">
+      <p class="mb-0"><small>Made with 💖 by CodeWorks</small></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
+    integrity="sha256-hw7v8jZF/rFEdx1ZHepT4D73AFTHLu/P9kEyrNesRyc=" crossorigin="anonymous"></script>
+
+  <script src="app/App.js" type="module"></script>
+</body>
+
+</html>
