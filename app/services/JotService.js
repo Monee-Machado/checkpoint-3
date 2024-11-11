@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { Jot } from "../models/Jot.js"
 import { loadState, saveState } from "../utils/Store.js"
 
+const SAVE_KEY = 'NO_TYPOS'
 
 
 // NOTE REMINDER: Jots is your array!
@@ -25,11 +26,11 @@ class JotService {
 
 
   saveJots() {
-    saveState('Jots', AppState.Jots)
+    saveState(SAVE_KEY, AppState.Jots)
   }
 
   loadJots() {
-    AppState.Jots = loadState('jots', [Jot])
+    AppState.Jots = loadState(SAVE_KEY, [Jot])
 
   }
 }

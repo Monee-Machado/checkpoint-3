@@ -14,14 +14,11 @@ export class JotController {
     console.log('Jot controller connected 📝');
     this.drawJot()
     // jotService.loadJots() <------- loading goes LAST!!!!
-    AppState.on('drawJot', () => console.log('Jot added'))
-    AppState.on('jots', this.drawJot)
-    AppState.on('drawActiveFullJot', this.drawActiveFullJot)
+    // AppState.on('drawJot', () => console.log('Jot added'))
+    AppState.on('Jots', this.drawJot)
+    AppState.on('activeJot', this.drawActiveFullJot)
     jotService.loadJots()
-    // FIXME UNABLE TO REGISTER LISTENER FOR 'jots' (SIDE NAV)
-    // FIXME UNABLE TO REGISTER LISTENER FOR 'drawJot' (SIDE NAV)
-    // FIXME UNABLE TO REGISTER LISTENER FOR 'activeDrawJot' (SIDE NAV)
-    // FIXME SAVES DON'T WORK
+
   }
 
   // NOTE Turning off ^^^this.draw turns off the html display on the webpage
@@ -66,16 +63,18 @@ export class JotController {
   }
 
 
+  // TODO start with getting this fixed up
+  // the names are undefined, there is no color present
+  // and the user should not need to put in a date
   createJot() {
     console.log('Creating Jot');
     event.preventDefault()
     const formElm = event.target
     const formData = {
-
       // @ts-ignore
       name: formElm.name.value,
       // @ts-ignore
-      createdOn: formElm.createdOn.value
+      color: formElm.color.value
     }
 
     console.log(formData)
@@ -90,6 +89,8 @@ export class JotController {
     // jotService.createJot(jotData)
   }
 
+
+  // TODO this will need to work with IDs instead of names, but test once the create is done, once they can be created properly, can those new ones be selected too.
   selectCreateJot(jotName) {
     console.log('👉✏', jotName);
     jotService.selectCreateJot(jotName)
@@ -100,6 +101,10 @@ export class JotController {
 
 
   // SECTION writing jots in the giant form
+  // TODO writing into the body of the active jot, and saving it
+  // try to get the text out of the textarea in the form
+  // pass that data to the service
+  // Reference Redacted for this.
   jotSave() {
     console.log('Saving Jot')
     event.preventDefault()

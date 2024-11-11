@@ -45,7 +45,7 @@
   <main class="container-fluid deep-blue text-light">
     <section class="row d-flex justify-content-between">
       <!-- SECTION DRAWS cards onto the display to the right -->
-      <div class="col-md-3 m-5 jumble-card shadow">
+      <div class="col-md-3 jumble-card shadow">
         <div class="row d-flex">
           <div>
             <span class="d-flex justify-content-end fs-5 sea-button"><i><span id="jot-count" class="fw-bold">0</span>
@@ -57,46 +57,47 @@
             <h2 class="mdi mdi-pencil">Add a Jot</h2>
           </span>
         </div>
+
         <div class="col">
-          <div class="d-flex justify-content-end">
+          <!-- FIXME createjot 0 REFERENCES -->
+          <form onsubmit="app.JotController.createJot()">
+
             <div class="col p-1">
               <span>Color</span>
               <input type="color" class="form-control" name="color" required>
             </div>
-          </div>
-          <div class="col">
-            <!-- FIXME createjot 0 REFERENCES -->
-            <form onsubmit="app.JotController.createJot()">
-              <input class="form-control rounded shadow" type="text" maxlength="15" placeholder="Title">
-              <!-- FIXME Look up MAX on redacted example! -->
-              <input class="form-control rounded shadow" name="createdOn" type="datetime-local">
 
-              <div class="col"><button class="btn btn-info shadow">Create
-                  +</button></div>
-            </form>
-          </div>
+
+            <input class="form-control rounded shadow" required minlength="3" maxlength="15" placeholder="Title"
+              name="name">
+
+
+            <div class="col"><button class="btn btn-info shadow">Create
+                +</button></div>
+          </form>
         </div>
+
+
         <div class="row">
           <div class="col-md-12">
 
             <section id="jotlist" class="row">
 
-              <div class="p-3 mb-4 d-flex justify-content-between">
+              <!-- <div class="p-3 mb-4 d-flex justify-content-between">
                 <span>aaaaaaaa</span><span>1/1/2024</span>
-              </div>
+              </div> -->
 
             </section>
           </div>
-
         </div>
 
+
+
       </div>
 
-
-
-      </div>
       <!-- FIXME A SECTION GOES HERE, BUT IT RUINS THE LAYOUT, BUT id= 'active-display should go within the section tag' -->
-      <div class="col-md-8 jumble-card shadow mt-5">
+
+      <div class="col-md-9 jumble-card shadow" id="active-display">
         <div class="row d-flex">
           <div class="mt-2 p-3">
             <h2 class="sea-button">(Insert title of Jot here)</h2>
@@ -124,14 +125,11 @@
               <div class="col-md-12 d-flex justify-content-end"><span id="">0 </span>words</div>
               <div class="col-md-12 d-flex justify-content-end">
               </div>
-
-
-
-
             </div>
           </form>
         </div>
       </div>
+
     </section>
 
   </main>
