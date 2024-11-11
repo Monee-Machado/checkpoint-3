@@ -16,7 +16,7 @@ export class JotController {
     // jotService.loadJots() <------- loading goes LAST!!!!
     AppState.on('drawJot', () => console.log('Jot added'))
     AppState.on('jots', this.drawJot)
-    AppState.on('activeDrawJot', this.drawActiveJot)
+    AppState.on('drawActiveFullJot', this.drawActiveFullJot)
     jotService.loadJots()
     // FIXME UNABLE TO REGISTER LISTENER FOR 'jots' (SIDE NAV)
     // FIXME UNABLE TO REGISTER LISTENER FOR 'drawJot' (SIDE NAV)
@@ -57,6 +57,14 @@ export class JotController {
   }
 
 
+  drawActiveFullJot() {
+    console.log('✏👉📝');
+    // FIXME CANNOT DRAW ACTIVE JOT in FULL display form
+    const activeFullJotElm = document.getElementById('active-display')
+    activeFullJotElm.innerHTML = AppState.activeJot.activeDisplay
+
+  }
+
 
   createJot() {
     console.log('Creating Jot');
@@ -82,9 +90,12 @@ export class JotController {
     // jotService.createJot(jotData)
   }
 
-  drawCreateJot() {
-
+  selectCreateJot(jotName) {
+    console.log('👉✏', jotName);
+    jotService.selectCreateJot(jotName)
   }
+
+
 
 
 
