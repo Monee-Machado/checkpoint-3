@@ -4,7 +4,6 @@ import { loadState, saveState } from "../utils/Store.js"
 
 const SAVE_KEY = 'NO_TYPOS'
 
-
 // NOTE REMINDER: Jots is your array!
 
 class JotService {
@@ -22,6 +21,20 @@ class JotService {
     AppState.Jots.push(new Jot(jotData))
     console.log(AppState.Jots);
     this.saveJots()
+  }
+
+  deleteJot() {
+
+    // what is the currently active jot?
+    const indexToRemove = AppState.Jots.indexOf(AppState.activeJot)
+    console.log('what is the index of the active jot?', indexToRemove)
+    AppState.Jots.splice(indexToRemove, 1)
+
+    this.saveJots()
+
+    AppState.activeJot = null
+
+
   }
 
 

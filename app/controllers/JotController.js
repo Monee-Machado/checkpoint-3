@@ -18,6 +18,7 @@ export class JotController {
     AppState.on('Jots', this.drawJot)
     AppState.on('activeJot', this.drawActiveFullJot)
     jotService.loadJots()
+    this.drawActiveFullJot()
 
   }
 
@@ -43,22 +44,20 @@ export class JotController {
   // SECTION CREATING jots on the side nav
 
   // NOTE active-jot EQUALS side nav display
-  drawActiveJot() {
+  drawJotList() {
     console.log('✏👉📃')
     const activeJotElm = document.getElementById('active-jot')
     activeJotElm.innerHTML = ''
     AppState.Jots.forEach(jot => activeJotElm.innerHTML += jot.activeDisplay)
 
-    // FIXME NOT working with ACTIVE display HTML???
     activeJotElm.innerHTML = AppState.activeJot.activeDisplay
   }
 
 
   drawActiveFullJot() {
     console.log('✏👉📝');
-    // FIXME CANNOT DRAW ACTIVE JOT in FULL display form
     const activeFullJotElm = document.getElementById('active-display')
-    activeFullJotElm.innerHTML = AppState.activeJot.activeDisplay
+    activeFullJotElm.innerHTML = AppState.activeJot?.activeDisplay || ''
 
   }
 
@@ -115,6 +114,7 @@ export class JotController {
   deleteJot() {
     console.log('Deleting Jot')
     event.preventDefault()
+    jotService.deleteJot()
   }
 
 
